@@ -1,6 +1,5 @@
-import { GraduationCap, Calendar, MapPin, Award, Trophy } from "lucide-react";
+import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 const education = [
   {
@@ -39,7 +38,7 @@ export function About() {
         </div>
 
         {/* Career Objective */}
-        <div className="max-w-4xl mx-auto mb-12">
+        <div className="max-w-4xl mx-auto mb-16">
           <Card className="glass-card hover-lift">
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold text-primary mb-4 flex items-center gap-2">
@@ -64,30 +63,6 @@ export function About() {
                   which I apply to build automation-focused solutions in education and beyond.
                 </p>
               </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Achievement Highlight */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <Card className="glass-card hover-lift overflow-hidden border-orange/30">
-            <div className="bg-gradient-to-r from-orange to-orange/70 text-primary-foreground px-4 py-2 flex items-center gap-2">
-              <Trophy className="w-4 h-4" />
-              Achievement
-            </div>
-            <CardContent className="p-6 flex items-center gap-4">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-orange to-orange/70 shadow-lg">
-                <Trophy className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground text-lg">3rd Prize - Projectra 2025</h4>
-                <p className="text-muted-foreground">
-                  Secured 3rd prize for a working model demonstration, showcasing practical innovation and collaboration in a competitive environment.
-                </p>
-              </div>
-              <Badge className="bg-orange/20 text-orange border-orange/30 ml-auto hidden sm:flex">
-                2025
-              </Badge>
             </CardContent>
           </Card>
         </div>
