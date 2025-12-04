@@ -1,11 +1,24 @@
 import { Briefcase, Calendar, CheckCircle2, Building2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const experiences = [
   {
+    role: "Co-Pilot Agent Developer Intern",
+    company: "Azvasa Education",
+    duration: "2025 - Present",
+    current: true,
+    points: [
+      "Building AI-driven and automation-based solutions that streamline education management workflows for teachers and staff",
+      "Designing and improving AI agents that reduce manual effort and improve data accessibility",
+      "Making everyday academic and administrative tasks faster and more accurate through intelligent automation",
+    ],
+  },
+  {
     role: "AWS Cloud Computing & DevOps Intern",
     company: "APSSDC (Andhra Pradesh State Skill Development Corporation)",
-    duration: "2025 - Present",
+    duration: "2025",
+    current: false,
     points: [
       "Implemented AWS services (EC2, S3, IAM) to simulate real-world deployment environments",
       "Practiced version control (Git) and continuous integration workflows for smoother deployments",
@@ -37,7 +50,7 @@ export function Experience() {
         </div>
 
         {/* Experience Cards */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-8">
           {experiences.map((exp, index) => (
             <Card key={index} className="glass-card hover-lift overflow-hidden group">
               <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary via-accent to-purple" />
@@ -50,9 +63,16 @@ export function Experience() {
                       <Briefcase className="w-8 h-8 text-primary-foreground" />
                     </div>
                     <div>
-                      <h3 className="text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                        {exp.role}
-                      </h3>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                          {exp.role}
+                        </h3>
+                        {exp.current && (
+                          <Badge className="bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30">
+                            Current
+                          </Badge>
+                        )}
+                      </div>
                       <div className="flex items-center gap-2 text-muted-foreground mt-1">
                         <Building2 className="w-4 h-4" />
                         <span className="text-sm lg:text-base">{exp.company}</span>
