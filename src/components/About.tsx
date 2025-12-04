@@ -57,7 +57,7 @@ export function About() {
         </div>
 
         {/* Education Timeline */}
-        <div className="max-w-4xl mx-auto">
+        <div id="education" className="max-w-4xl mx-auto scroll-mt-24">
           <h3 className="text-2xl font-bold text-center mb-12 flex items-center justify-center gap-3">
             <GraduationCap className="w-8 h-8 text-primary" />
             Education
