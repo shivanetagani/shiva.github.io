@@ -7,7 +7,6 @@ import {
   Users,
   Terminal,
   FileCode,
-  Database,
   GitBranch,
   Server,
   BarChart3,
@@ -15,17 +14,30 @@ import {
   Lightbulb,
   Heart,
   Zap,
+  Bot,
+  Sparkles,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const skillCategories = [
   {
+    title: "AI & Automation",
+    icon: Bot,
+    color: "from-primary to-accent",
+    skills: [
+      { name: "AI Agents", icon: Bot },
+      { name: "Generative AI", icon: Sparkles },
+      { name: "Prompt Engineering", icon: MessageSquare },
+      { name: "Data Analysis", icon: BarChart3 },
+    ],
+  },
+  {
     title: "Programming Languages",
     icon: Code2,
     color: "from-primary to-primary/70",
     skills: [
-      { name: "Java", icon: Terminal },
-      { name: "Python (Intermediate)", icon: FileCode },
+      { name: "Python", icon: Terminal },
+      { name: "Java", icon: FileCode },
       { name: "C++ (Basics)", icon: Code2 },
     ],
   },
@@ -57,17 +69,7 @@ const skillCategories = [
     skills: [
       { name: "AWS (EC2, S3, IAM)", icon: Server },
       { name: "CI/CD (Basics)", icon: Zap },
-      { name: "Deployment Automation", icon: Database },
-    ],
-  },
-  {
-    title: "AI & Data Science",
-    icon: Brain,
-    color: "from-primary to-accent",
-    skills: [
-      { name: "Prompt Engineering", icon: MessageSquare },
-      { name: "Data Analysis", icon: BarChart3 },
-      { name: "Data Visualization", icon: BarChart3 },
+      { name: "Cloud Fundamentals", icon: Cloud },
     ],
   },
   {
@@ -98,7 +100,7 @@ export function Skills() {
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             A comprehensive toolkit of technical and soft skills developed through
-            academic learning and hands-on projects
+            academic learning, internships, and hands-on projects
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
         </div>

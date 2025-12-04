@@ -41,7 +41,7 @@ export function Hero() {
                 className="text-xl sm:text-2xl text-accent font-semibold animate-fade-in-up"
                 style={{ animationDelay: "0.2s" }}
               >
-                CS & Data Science Student
+                Co-Pilot Agent Developer Intern @ Azvasa Education
               </p>
             </div>
 
@@ -49,10 +49,9 @@ export function Hero() {
               className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-up"
               style={{ animationDelay: "0.3s" }}
             >
-              Motivated and analytical Computer Science & Data Science student with
-              hands-on experience in full-stack development, AWS Cloud, and DevOps
-              fundamentals. Passionate about solving complex technical problems,
-              optimizing performance, and creating scalable systems.
+              Building AI-driven automation solutions that streamline education workflows. 
+              Passionate about AI agents, Generative AI, and cloud-based applications 
+              that create measurable impact for users and organizations.
             </p>
 
             <div

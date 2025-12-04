@@ -1,5 +1,6 @@
-import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
+import { GraduationCap, Calendar, MapPin, Award, Trophy } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const education = [
   {
@@ -38,20 +39,55 @@ export function About() {
         </div>
 
         {/* Career Objective */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-4xl mx-auto mb-12">
           <Card className="glass-card hover-lift">
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold text-primary mb-4 flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
-                Career Objective
+                About Me
               </h3>
-              <p className="text-muted-foreground leading-relaxed text-base lg:text-lg">
-                Aspiring Software Engineer with a passion for building scalable,
-                efficient systems. I thrive on solving complex technical challenges
-                and continuously expanding my knowledge in cloud computing, full-stack
-                development, and DevOps practices. Seeking opportunities to contribute
-                to innovative projects while growing as a professional in the tech industry.
-              </p>
+              <div className="space-y-4 text-muted-foreground leading-relaxed text-base lg:text-lg">
+                <p>
+                  In my current role as a <span className="text-primary font-medium">Co-Pilot Agent Developer Intern at Azvasa Education</span>, 
+                  I contribute to building AI-driven and automation-based solutions that streamline education management 
+                  workflows for teachers and staff. I work on designing and improving AI agents that reduce manual effort, 
+                  improve data accessibility, and make everyday academic and administrative tasks faster and more accurate.
+                </p>
+                <p>
+                  During my B.Tech in Computer Science (Data Science) at Audisankara College, I have taken on projects 
+                  and model exhibitions where I apply AI and cloud concepts to real-world problems. I actively share my 
+                  learning journey on topics like AI tools, Python for Data Science, startups, and industry-ready skills, 
+                  which has helped me connect with a wider tech community and stay aligned with current trends.
+                </p>
+                <p>
+                  My core skills include <span className="text-accent font-medium">AI agents, Generative AI, prompt engineering, Python, Java, and cloud fundamentals</span>, 
+                  which I apply to build automation-focused solutions in education and beyond.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Achievement Highlight */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <Card className="glass-card hover-lift overflow-hidden border-orange/30">
+            <div className="bg-gradient-to-r from-orange to-orange/70 text-primary-foreground px-4 py-2 flex items-center gap-2">
+              <Trophy className="w-4 h-4" />
+              Achievement
+            </div>
+            <CardContent className="p-6 flex items-center gap-4">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-orange to-orange/70 shadow-lg">
+                <Trophy className="w-8 h-8 text-primary-foreground" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground text-lg">3rd Prize - Projectra 2025</h4>
+                <p className="text-muted-foreground">
+                  Secured 3rd prize for a working model demonstration, showcasing practical innovation and collaboration in a competitive environment.
+                </p>
+              </div>
+              <Badge className="bg-orange/20 text-orange border-orange/30 ml-auto hidden sm:flex">
+                2025
+              </Badge>
             </CardContent>
           </Card>
         </div>
