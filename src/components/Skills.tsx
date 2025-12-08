@@ -32,16 +32,6 @@ const skillCategories = [
     ],
   },
   {
-    title: "Programming Languages",
-    icon: Code2,
-    color: "from-primary to-primary/70",
-    skills: [
-      { name: "Python", icon: Terminal },
-      { name: "Java", icon: FileCode },
-      { name: "C++ (Basics)", icon: Code2 },
-    ],
-  },
-  {
     title: "Web Development",
     icon: Globe,
     color: "from-accent to-accent/70",
@@ -49,16 +39,15 @@ const skillCategories = [
       { name: "HTML", icon: FileCode },
       { name: "CSS", icon: FileCode },
       { name: "JavaScript", icon: Code2 },
+      { name: "Python", icon: Terminal },
     ],
   },
   {
-    title: "Frameworks & Tools",
+    title: "Tools & Platforms",
     icon: Wrench,
     color: "from-purple to-purple/70",
     skills: [
-      { name: "Git", icon: GitBranch },
       { name: "GitHub", icon: GitBranch },
-      { name: "VS Code", icon: Terminal },
       { name: "MS Office", icon: FileCode },
     ],
   },

@@ -8,24 +8,28 @@ const certifications = [
     issuer: "NPTEL",
     year: "2024",
     color: "from-primary to-primary/70",
+    pdfUrl: "", // Add PDF URL here
   },
   {
     name: "Frontend Development",
     issuer: "Great Learning",
     year: "2024",
     color: "from-accent to-accent/70",
+    pdfUrl: "", // Add PDF URL here
   },
   {
     name: "Web Development",
     issuer: "IBM edX",
     year: "2024",
     color: "from-purple to-purple/70",
+    pdfUrl: "", // Add PDF URL here
   },
   {
     name: "AWS Cloud Computing – DevOps",
     issuer: "APSSDC",
     year: "2025",
     color: "from-orange to-orange/70",
+    pdfUrl: "", // Add PDF URL here
   },
 ];
 
@@ -49,8 +53,9 @@ export function Certifications() {
           {certifications.map((cert, index) => (
             <Card
               key={index}
-              className="glass-card hover-lift group overflow-hidden"
+              className={`glass-card hover-lift group overflow-hidden ${cert.pdfUrl ? 'cursor-pointer' : ''}`}
               style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => cert.pdfUrl && window.open(cert.pdfUrl, '_blank')}
             >
               <CardContent className="p-6 text-center">
                 {/* Icon */}
@@ -70,6 +75,13 @@ export function Certifications() {
                   <Calendar className="w-3 h-3 mr-1" />
                   {cert.year}
                 </Badge>
+
+                {cert.pdfUrl && (
+                  <div className="mt-3 flex items-center justify-center gap-1 text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                    <ExternalLink className="w-3 h-3" />
+                    <span>View Certificate</span>
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}
