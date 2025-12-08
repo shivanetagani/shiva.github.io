@@ -1,6 +1,9 @@
-import { Trophy, Calendar, Medal, Award } from "lucide-react";
+import { useState } from "react";
+import { Trophy, Calendar, Medal, Award, X, ChevronLeft, ChevronRight, Image } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const achievements = [
   {
@@ -10,10 +13,37 @@ const achievements = [
     year: "2025",
     icon: Trophy,
     color: "from-orange to-orange/70",
+    images: [] as string[], // Add image URLs here
   },
 ];
 
 export function Achievements() {
+  const [selectedAchievement, setSelectedAchievement] = useState<typeof achievements[0] | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openGallery = (achievement: typeof achievements[0]) => {
+    if (achievement.images.length > 0) {
+      setSelectedAchievement(achievement);
+      setCurrentImageIndex(0);
+    }
+  };
+
+  const nextImage = () => {
+    if (selectedAchievement) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedAchievement.images.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedAchievement) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedAchievement.images.length - 1 : prev - 1
+      );
+    }
+  };
+
   return (
     <section id="achievements" className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,7 +63,8 @@ export function Achievements() {
           {achievements.map((achievement, index) => (
             <Card
               key={index}
-              className="glass-card hover-lift overflow-hidden group"
+              className={`glass-card hover-lift overflow-hidden group ${achievement.images.length > 0 ? 'cursor-pointer' : ''}`}
+              onClick={() => openGallery(achievement)}
             >
               <div className="bg-gradient-to-r from-orange to-orange/70 text-primary-foreground px-6 py-3 flex items-center gap-2">
                 <Trophy className="w-5 h-5" />
@@ -63,6 +94,13 @@ export function Achievements() {
                     <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
                       {achievement.description}
                     </p>
+                    
+                    {achievement.images.length > 0 && (
+                      <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                        <Image className="w-4 h-4" />
+                        <span>Click to view {achievement.images.length} image{achievement.images.length > 1 ? 's' : ''}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </CardContent>
@@ -70,6 +108,50 @@ export function Achievements() {
           ))}
         </div>
       </div>
+
+      {/* Image Gallery Dialog */}
+      <Dialog open={!!selectedAchievement} onOpenChange={() => setSelectedAchievement(null)}>
+        <DialogContent className="max-w-4xl">
+          <DialogHeader>
+            <DialogTitle>{selectedAchievement?.title}</DialogTitle>
+          </DialogHeader>
+          
+          {selectedAchievement && selectedAchievement.images.length > 0 && (
+            <div className="relative">
+              <img
+                src={selectedAchievement.images[currentImageIndex]}
+                alt={`${selectedAchievement.title} - Image ${currentImageIndex + 1}`}
+                className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
+              />
+              
+              {selectedAchievement.images.length > 1 && (
+                <>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute left-2 top-1/2 -translate-y-1/2"
+                    onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute right-2 top-1/2 -translate-y-1/2"
+                    onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                  
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 px-3 py-1 rounded-full text-sm">
+                    {currentImageIndex + 1} / {selectedAchievement.images.length}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
