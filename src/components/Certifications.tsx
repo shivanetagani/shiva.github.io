@@ -8,28 +8,28 @@ const certifications = [
     issuer: "NPTEL",
     year: "2024",
     color: "from-primary to-primary/70",
-    pdfUrl: "", // Add PDF URL here
+    pdfUrl: "https://drive.google.com/file/d/1NhdMYjfFvxJgSwK1i2MAZwRU7uc3Xu_A/view?usp=sharing",
   },
   {
     name: "Frontend Development",
     issuer: "Great Learning",
     year: "2024",
     color: "from-accent to-accent/70",
-    pdfUrl: "", // Add PDF URL here
+    pdfUrl: "https://drive.google.com/file/d/1p3AhuGAyt5h5AODD8Z5b3JLuTLA5Fkfn/view?usp=sharing",
   },
   {
     name: "Web Development",
     issuer: "IBM edX",
     year: "2024",
     color: "from-purple to-purple/70",
-    pdfUrl: "", // Add PDF URL here
+    pdfUrl: "https://drive.google.com/file/d/1i-XwEtAx1g96oqwH0yITjDilxY2d9hwy/view?usp=sharing",
   },
   {
     name: "AWS Cloud Computing – DevOps",
     issuer: "APSSDC",
     year: "2025",
     color: "from-orange to-orange/70",
-    pdfUrl: "", // Add PDF URL here
+    pdfUrl: "https://drive.google.com/file/d/1H9NDd4RE8yvCnB4Fwc-Z8rrxNUnD1hb1/view?usp=sharing",
   },
 ];
 

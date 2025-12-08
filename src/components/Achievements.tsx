@@ -13,7 +13,7 @@ const achievements = [
     year: "2025",
     icon: Trophy,
     color: "from-orange to-orange/70",
-    images: [] as string[], // Add image URLs here
+    images: ["https://drive.google.com/uc?export=view&id=1aiYqIao8KlFyhTYpuSs6kyRP8f_hslhe"],
   },
 ];
 
