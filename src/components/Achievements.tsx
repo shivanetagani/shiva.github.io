@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Trophy, Calendar, Medal, Award, X, ChevronLeft, ChevronRight, Image } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import projectraImage from "@/assets/projectra-achievement.jpg";
 
 const achievements = [
   {
@@ -13,7 +14,7 @@ const achievements = [
     year: "2025",
     icon: Trophy,
     color: "from-orange to-orange/70",
-    images: ["https://drive.google.com/uc?export=view&id=1aiYqIao8KlFyhTYpuSs6kyRP8f_hslhe"],
+    images: [projectraImage],
   },
 ];
 
@@ -111,9 +112,12 @@ export function Achievements() {
 
       {/* Image Gallery Dialog */}
       <Dialog open={!!selectedAchievement} onOpenChange={() => setSelectedAchievement(null)}>
-        <DialogContent className="max-w-4xl">
+        <DialogContent className="max-w-4xl" aria-describedby="achievement-description">
           <DialogHeader>
             <DialogTitle>{selectedAchievement?.title}</DialogTitle>
+            <DialogDescription id="achievement-description">
+              View achievement images
+            </DialogDescription>
           </DialogHeader>
           
           {selectedAchievement && selectedAchievement.images.length > 0 && (
