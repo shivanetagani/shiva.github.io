@@ -78,7 +78,7 @@ export function Hero() {
             </p>
 
             <div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-fade-in-up px-4 sm:px-0"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-fade-in-up px-4 sm:px-0 pb-16 sm:pb-0"
               style={{ animationDelay: "0.4s" }}
             >
               <Button
