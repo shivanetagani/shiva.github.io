@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Trophy, Calendar, Medal, Award, X, ChevronLeft, ChevronRight, Image } from "lucide-react";
+import { Trophy, Calendar, Image, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -46,17 +46,17 @@ export function Achievements() {
   };
 
   return (
-    <section id="achievements" className="py-20 lg:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="achievements" className="section-spacing bg-background">
+      <div className="section-container">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="section-header">
+          <h2 className="section-title">
             <span className="gradient-text">Achievements</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-description">
             Recognition and awards for innovation and excellence
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="section-divider" />
         </div>
 
         {/* Achievements Grid */}
@@ -67,38 +67,38 @@ export function Achievements() {
               className={`glass-card hover-lift overflow-hidden group ${achievement.images.length > 0 ? 'cursor-pointer' : ''}`}
               onClick={() => openGallery(achievement)}
             >
-              <div className="bg-gradient-to-r from-orange to-orange/70 text-primary-foreground px-6 py-3 flex items-center gap-2">
-                <Trophy className="w-5 h-5" />
-                <span className="font-semibold">Achievement</span>
+              <div className="bg-gradient-to-r from-orange to-orange/70 text-primary-foreground px-4 sm:px-6 py-2 sm:py-3 flex items-center gap-2">
+                <Trophy className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="font-semibold text-sm sm:text-base">Achievement</span>
               </div>
 
-              <CardContent className="p-8">
-                <div className="flex flex-col md:flex-row items-start gap-6">
+              <CardContent className="p-4 sm:p-6 lg:p-8">
+                <div className="flex flex-col md:flex-row items-start gap-4 sm:gap-6">
                   {/* Icon */}
                   <div
-                    className={`p-6 rounded-2xl bg-gradient-to-br ${achievement.color} shadow-xl group-hover:scale-110 transition-transform flex-shrink-0`}
+                    className={`p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br ${achievement.color} shadow-xl group-hover:scale-110 transition-transform flex-shrink-0`}
                   >
-                    <achievement.icon className="w-12 h-12 text-primary-foreground" />
+                    <achievement.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-primary-foreground" />
                   </div>
 
                   {/* Content */}
                   <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-                      <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 mb-3 sm:mb-4">
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                         {achievement.title}
                       </h3>
-                      <Badge className="bg-orange/20 text-orange border-orange/30 w-fit">
+                      <Badge className="bg-orange/20 text-orange border-orange/30 w-fit text-xs sm:text-sm">
                         <Calendar className="w-3 h-3 mr-1" />
                         {achievement.year}
                       </Badge>
                     </div>
-                    <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
+                    <p className="text-muted-foreground text-sm sm:text-base lg:text-lg leading-relaxed">
                       {achievement.description}
                     </p>
                     
                     {achievement.images.length > 0 && (
-                      <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground group-hover:text-primary transition-colors">
-                        <Image className="w-4 h-4" />
+                      <div className="mt-3 sm:mt-4 flex items-center gap-2 text-xs sm:text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                        <Image className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         <span>Click to view {achievement.images.length} image{achievement.images.length > 1 ? 's' : ''}</span>
                       </div>
                     )}
@@ -112,9 +112,9 @@ export function Achievements() {
 
       {/* Image Gallery Dialog */}
       <Dialog open={!!selectedAchievement} onOpenChange={() => setSelectedAchievement(null)}>
-        <DialogContent className="max-w-4xl" aria-describedby="achievement-description">
+        <DialogContent className="max-w-[95vw] sm:max-w-4xl p-4 sm:p-6" aria-describedby="achievement-description">
           <DialogHeader>
-            <DialogTitle>{selectedAchievement?.title}</DialogTitle>
+            <DialogTitle className="text-base sm:text-lg">{selectedAchievement?.title}</DialogTitle>
             <DialogDescription id="achievement-description">
               View achievement images
             </DialogDescription>
@@ -125,7 +125,7 @@ export function Achievements() {
               <img
                 src={selectedAchievement.images[currentImageIndex]}
                 alt={`${selectedAchievement.title} - Image ${currentImageIndex + 1}`}
-                className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
+                className="w-full h-auto max-h-[60vh] sm:max-h-[70vh] object-contain rounded-lg"
               />
               
               {selectedAchievement.images.length > 1 && (
@@ -133,7 +133,7 @@ export function Achievements() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="absolute left-2 top-1/2 -translate-y-1/2"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 touch-target"
                     onClick={(e) => { e.stopPropagation(); prevImage(); }}
                   >
                     <ChevronLeft className="w-4 h-4" />
@@ -141,13 +141,13 @@ export function Achievements() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="absolute right-2 top-1/2 -translate-y-1/2"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 touch-target"
                     onClick={(e) => { e.stopPropagation(); nextImage(); }}
                   >
                     <ChevronRight className="w-4 h-4" />
                   </Button>
                   
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 px-3 py-1 rounded-full text-sm">
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 px-3 py-1 rounded-full text-xs sm:text-sm">
                     {currentImageIndex + 1} / {selectedAchievement.images.length}
                   </div>
                 </>

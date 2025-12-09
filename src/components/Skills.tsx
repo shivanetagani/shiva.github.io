@@ -3,7 +3,6 @@ import {
   Globe,
   Wrench,
   Cloud,
-  Brain,
   Users,
   Terminal,
   FileCode,
@@ -76,54 +75,54 @@ const skillCategories = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 lg:py-32 gradient-skills relative overflow-hidden">
+    <section id="skills" className="section-spacing gradient-skills relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="section-container relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="section-header">
+          <h2 className="section-title">
             My <span className="gradient-text">Skills</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-description">
             A comprehensive toolkit of technical and soft skills developed through
             academic learning, internships, and hands-on projects
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="section-divider" />
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {skillCategories.map((category, index) => (
             <Card
               key={index}
               className="glass-card hover-lift group overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-5 lg:p-6">
                 {/* Category Header */}
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                   <div
-                    className={`p-3 rounded-xl bg-gradient-to-br ${category.color} shadow-lg group-hover:scale-110 transition-transform`}
+                    className={`p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${category.color} shadow-lg group-hover:scale-110 transition-transform`}
                   >
-                    <category.icon className="w-6 h-6 text-primary-foreground" />
+                    <category.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground">
                     {category.title}
                   </h3>
                 </div>
 
                 {/* Skills List */}
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {category.skills.map((skill, skillIndex) => (
                     <div
                       key={skillIndex}
-                      className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors group/skill"
+                      className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors group/skill"
                     >
-                      <skill.icon className="w-5 h-5 text-muted-foreground group-hover/skill:text-primary transition-colors" />
-                      <span className="text-sm font-medium text-muted-foreground group-hover/skill:text-foreground transition-colors">
+                      <skill.icon className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover/skill:text-primary transition-colors flex-shrink-0" />
+                      <span className="text-xs sm:text-sm font-medium text-muted-foreground group-hover/skill:text-foreground transition-colors">
                         {skill.name}
                       </span>
                     </div>

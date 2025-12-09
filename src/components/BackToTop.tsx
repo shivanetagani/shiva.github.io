@@ -10,7 +10,7 @@ export function BackToTop() {
       setIsVisible(window.scrollY > 500);
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
@@ -23,11 +23,11 @@ export function BackToTop() {
   return (
     <Button
       onClick={scrollToTop}
-      className="fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg bg-primary hover:bg-primary/90 animate-fade-in-up"
+      className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 p-2.5 sm:p-3 rounded-full shadow-lg bg-primary hover:bg-primary/90 animate-fade-in-up touch-target"
       size="icon"
       aria-label="Back to top"
     >
-      <ArrowUp className="w-5 h-5" />
+      <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
     </Button>
   );
 }
