@@ -35,21 +35,21 @@ const certifications = [
 
 export function Certifications() {
   return (
-    <section id="certificates" className="py-20 lg:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="certificates" className="section-spacing bg-background">
+      <div className="section-container">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="section-header">
+          <h2 className="section-title">
             <span className="gradient-text">Certifications</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-description">
             Professional certifications and courses completed
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="section-divider" />
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 max-w-6xl mx-auto">
           {certifications.map((cert, index) => (
             <Card
               key={index}
@@ -57,27 +57,27 @@ export function Certifications() {
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => cert.pdfUrl && window.open(cert.pdfUrl, '_blank')}
             >
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-4 sm:p-5 lg:p-6 text-center">
                 {/* Icon */}
                 <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${cert.color} mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${cert.color} mx-auto mb-3 sm:mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}
                 >
-                  <Award className="w-8 h-8 text-primary-foreground" />
+                  <Award className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-primary-foreground" />
                 </div>
 
                 {/* Content */}
-                <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 min-h-[3rem]">
+                <h3 className="font-semibold text-foreground text-sm sm:text-base mb-1 sm:mb-2 group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
                   {cert.name}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-3">{cert.issuer}</p>
+                <p className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3">{cert.issuer}</p>
                 
-                <Badge variant="outline" className="border-primary/30 text-primary">
+                <Badge variant="outline" className="border-primary/30 text-primary text-xs">
                   <Calendar className="w-3 h-3 mr-1" />
                   {cert.year}
                 </Badge>
 
                 {cert.pdfUrl && (
-                  <div className="mt-3 flex items-center justify-center gap-1 text-xs text-muted-foreground group-hover:text-primary transition-colors">
+                  <div className="mt-2 sm:mt-3 flex items-center justify-center gap-1 text-xs text-muted-foreground group-hover:text-primary transition-colors">
                     <ExternalLink className="w-3 h-3" />
                     <span>View Certificate</span>
                   </div>

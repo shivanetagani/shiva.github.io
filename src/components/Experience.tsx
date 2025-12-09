@@ -31,70 +31,70 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="py-20 lg:py-32 gradient-skills relative overflow-hidden"
+      className="section-spacing gradient-skills relative overflow-hidden"
     >
       {/* Background decoration */}
-      <div className="absolute top-20 right-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute top-20 right-0 w-48 sm:w-72 h-48 sm:h-72 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-0 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="section-container relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="section-header">
+          <h2 className="section-title">
             Work <span className="gradient-text">Experience</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="section-description">
             Professional experience and internships that shaped my skills
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4" />
+          <div className="section-divider" />
         </div>
 
         {/* Experience Cards */}
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
           {experiences.map((exp, index) => (
             <Card key={index} className="glass-card hover-lift overflow-hidden group">
-              <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary via-accent to-purple" />
+              <div className="absolute top-0 left-0 w-1 sm:w-2 h-full bg-gradient-to-b from-primary via-accent to-purple" />
               
-              <CardContent className="p-8">
+              <CardContent className="p-4 sm:p-6 lg:p-8">
                 {/* Header */}
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-4 rounded-2xl bg-gradient-to-br from-primary to-accent shadow-lg flex-shrink-0">
-                      <Briefcase className="w-8 h-8 text-primary-foreground" />
+                <div className="flex flex-col gap-4 mb-4 sm:mb-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="p-2.5 sm:p-3 lg:p-4 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary to-accent shadow-lg flex-shrink-0">
+                      <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-primary-foreground" />
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start gap-2 flex-wrap mb-1">
+                        <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                           {exp.role}
                         </h3>
                         {exp.current && (
-                          <Badge className="bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30">
+                          <Badge className="bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30 text-xs flex-shrink-0">
                             Current
                           </Badge>
                         )}
                       </div>
-                      <div className="flex items-center gap-2 text-muted-foreground mt-1">
-                        <Building2 className="w-4 h-4" />
-                        <span className="text-sm lg:text-base">{exp.company}</span>
+                      <div className="flex items-center gap-1.5 sm:gap-2 text-muted-foreground">
+                        <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm lg:text-base truncate">{exp.company}</span>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-2 text-accent font-semibold bg-accent/10 px-4 py-2 rounded-full">
-                    <Calendar className="w-4 h-4" />
+                  <div className="flex items-center gap-2 text-accent font-semibold bg-accent/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full w-fit text-xs sm:text-sm">
+                    <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     {exp.duration}
                   </div>
                 </div>
 
                 {/* Points */}
-                <div className="space-y-4 pl-0 lg:pl-20">
+                <div className="space-y-2 sm:space-y-3 lg:space-y-4">
                   {exp.points.map((point, pIndex) => (
                     <div
                       key={pIndex}
-                      className="flex items-start gap-3 p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors"
+                      className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-muted/50 hover:bg-muted transition-colors"
                     >
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <p className="text-muted-foreground text-sm lg:text-base leading-relaxed">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <p className="text-muted-foreground text-xs sm:text-sm lg:text-base leading-relaxed">
                         {point}
                       </p>
                     </div>

@@ -28,7 +28,7 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -41,6 +41,29 @@ export function Navbar() {
       localStorage.setItem("theme", "light");
     }
   }, [isDark]);
+
+  // Close mobile menu when resizing to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -58,8 +81,8 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <nav className="section-container">
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
           <a
             href="#home"
@@ -67,13 +90,13 @@ export function Navbar() {
               e.preventDefault();
               scrollToSection("#home");
             }}
-            className="text-xl lg:text-2xl font-bold gradient-text"
+            className="text-lg sm:text-xl lg:text-2xl font-bold gradient-text"
           >
             ShivaNetagani
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -92,17 +115,20 @@ export function Navbar() {
               size="icon"
               onClick={() => setIsDark(!isDark)}
               className="ml-2"
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
             >
               {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-1 sm:gap-2">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsDark(!isDark)}
+              className="touch-target"
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
             >
               {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
@@ -110,6 +136,9 @@ export function Navbar() {
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="touch-target"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -118,21 +147,23 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-card/95 backdrop-blur-lg border-t border-border animate-fade-in-up">
-            <div className="py-4 space-y-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }}
-                  className="block px-4 py-3 text-muted-foreground hover:text-primary hover:bg-muted/50 transition-colors rounded-lg mx-2"
-                >
-                  {link.name}
-                </a>
-              ))}
+          <div className="lg:hidden fixed inset-x-0 top-14 sm:top-16 bottom-0 bg-background/98 backdrop-blur-lg border-t border-border animate-fade-in-up overflow-y-auto safe-bottom">
+            <div className="py-4 sm:py-6 px-4">
+              <div className="space-y-1 sm:space-y-2">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(link.href);
+                    }}
+                    className="block px-4 py-3 sm:py-4 text-base sm:text-lg text-muted-foreground hover:text-primary hover:bg-muted/50 transition-colors rounded-lg touch-target"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         )}

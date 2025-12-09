@@ -90,11 +90,13 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -103,6 +105,35 @@
 
   code {
     font-family: 'Fira Code', monospace;
+  }
+}
+
+@layer components {
+  /* Section container - consistent padding across all sections */
+  .section-container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing - consistent vertical rhythm */
+  .section-spacing {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  /* Section header - consistent styling */
+  .section-header {
+    @apply text-center mb-10 sm:mb-12 lg:mb-16;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4;
+  }
+
+  .section-description {
+    @apply text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto px-4;
+  }
+
+  .section-divider {
+    @apply w-16 sm:w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-3 sm:mt-4;
   }
 }
 
@@ -137,7 +168,7 @@
   }
 
   .hover-lift:hover {
-    @apply -translate-y-2 shadow-xl;
+    @apply -translate-y-1 sm:-translate-y-2 shadow-xl;
   }
 
   .glow-primary {
@@ -148,6 +179,21 @@
     @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
     background-size: 200% auto;
     animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Touch-friendly tap targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Safe area for mobile */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+
+  /* Prevent horizontal scroll */
+  .no-overflow-x {
+    overflow-x: hidden;
   }
 }
 
@@ -189,5 +235,31 @@
   }
   50% {
     box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  .floating-animation {
+    animation: none;
+  }
+  
+  .animate-spin-slow {
+    animation: none;
   }
 }
