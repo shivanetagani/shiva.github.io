@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center gradient-hero relative overflow-hidden pt-16 sm:pt-20"
+      className="min-h-screen flex flex-col gradient-hero relative overflow-hidden pt-16 sm:pt-20"
     >
       {/* Background decorations - hidden on mobile for performance */}
       <div className="absolute inset-0 overflow-hidden">
@@ -22,8 +22,9 @@ export function Hero() {
         <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] lg:w-[800px] h-[600px] lg:h-[800px] border border-primary/5 rounded-full animate-spin-slow" />
       </div>
 
-      <div className="section-container relative z-10 py-8 sm:py-12">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12 lg:gap-16 xl:gap-20">
+      {/* Main content - flex-1 to push scroll indicator to bottom */}
+      <div className="flex-1 flex items-center section-container relative z-10 py-8 sm:py-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12 lg:gap-16 xl:gap-20 w-full">
           {/* Profile Image - shows first on mobile */}
           <div className="flex-shrink-0 relative order-first lg:order-last">
             <div className="relative">
@@ -78,7 +79,7 @@ export function Hero() {
             </p>
 
             <div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-fade-in-up px-4 sm:px-0 pb-16 sm:pb-0"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-fade-in-up px-4 sm:px-0"
               style={{ animationDelay: "0.4s" }}
             >
               <Button
@@ -101,17 +102,17 @@ export function Hero() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <button
-            onClick={() => scrollToSection("#about")}
-            className="p-2 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:bg-card transition-colors touch-target"
-            aria-label="Scroll to about section"
-          >
-            <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-          </button>
-        </div>
+      {/* Scroll indicator - positioned at bottom of section, not overlapping content */}
+      <div className="relative z-10 pb-6 sm:pb-8 flex justify-center">
+        <button
+          onClick={() => scrollToSection("#about")}
+          className="p-2 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:bg-card transition-colors touch-target animate-bounce"
+          aria-label="Scroll to about section"
+        >
+          <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+        </button>
       </div>
     </section>
   );
