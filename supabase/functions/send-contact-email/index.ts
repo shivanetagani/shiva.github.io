@@ -37,7 +37,7 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "Portfolio Contact <onboarding@resend.dev>",
-        to: ["shivanetagani@gmail.com"],
+        to: ["netaganishiva@gmail.com"],
         subject: `New Portfolio Message from ${name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
